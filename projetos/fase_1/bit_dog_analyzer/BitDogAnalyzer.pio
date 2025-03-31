@@ -1,0 +1,84 @@
+; O intuito é controlar quatro pinos distintos com quatro máquinas de estado
+; distintas, para que cada um deles tenha seu próprio FIFO e também seu próprio
+; DREQ. 
+; 
+; Neste programa estou conferindo o estatus do pino em pins e escrevendo ele no registrador ISR.
+;
+; O DMA vai complexificar isso aqui demais, fico fortemente assustado.
+
+.program sample0
+.wrap_target
+    in pins, 1
+.wrap
+
+.program sample1
+.wrap_target 
+    in pins, 1
+.wrap
+
+.program sample2
+.wrap_target 
+    in pins, 1
+.wrap 
+
+.program sample3
+.wrap_target 
+    in pins, 1
+.wrap
+
+% c-sdk {
+
+    static inline pio_sm_config sample0_program_init(PIO pio, uint sm, uint offset0, uint in_pin, float div) {
+
+    // Criamos uma estrutura de configuração, apontando à state machine desejada.
+    pio_sm_config c = sample0_program_get_default_config(offset0); 
+    
+    // Configuramos o pino de entrada para a state machine e depois para o PIO.
+    sm_config_set_in_pins(&c, in_pin);
+    pio_gpio_init(pio, in_pin);
+
+    // Os dados do pino serão shifted à direita do ISR. Se estava 0b0000, agora seria 0b1000, por 
+    // conta de empurrar o 1 da esquerda à direita. O autopush (jogar do ISR para o FIFO) acontece
+    // ao preenchermos o ISR com 32 bits.
+    sm_config_set_in_shift(&c, true, true, 32);
+    
+    // Junto os dois FIFOS para ter um único FIFO grande, o FIFO_RX desta state machine.
+    sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX); 
+    
+    // Aplico a configuração na state machine.
+    pio_sm_init(pio, sm, offset0, &c);  
+
+    return c;
+    }
+
+    static inline pio_sm_config sample1_program_init(PIO pio, uint sm, uint offset1, uint in_pin, float div) {
+        pio_sm_config c = sample1_program_get_default_config(offset1); 
+        sm_config_set_in_pins(&c, in_pin);
+        pio_gpio_init(pio, in_pin);
+        sm_config_set_in_shift(&c, true, true, 32);
+        sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX); 
+        pio_sm_init(pio, sm, offset1, &c); 
+        return c;
+    }
+
+    static inline pio_sm_config sample2_program_init(PIO pio, uint sm, uint offset2, uint in_pin, float div) {
+        pio_sm_config c = sample1_program_get_default_config(offset2); 
+        sm_config_set_in_pins(&c, in_pin);
+        pio_gpio_init(pio, in_pin);
+        sm_config_set_in_shift(&c, true, true, 32);
+        sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX); 
+        pio_sm_init(pio, sm, offset2, &c);  
+        return c;
+    }
+
+    static inline pio_sm_config sample3_program_init(PIO pio, uint sm, uint offset3, uint in_pin, float div) {
+        pio_sm_config c = sample1_program_get_default_config(offset3); 
+        sm_config_set_in_pins(&c, in_pin);
+        pio_gpio_init(pio, in_pin);
+        sm_config_set_in_shift(&c, true, true, 32);
+        sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX); 
+        pio_sm_init(pio, sm, offset3, &c); 
+        return c; 
+    }
+
+%}

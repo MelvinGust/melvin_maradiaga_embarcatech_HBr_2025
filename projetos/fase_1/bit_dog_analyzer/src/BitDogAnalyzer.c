@@ -8,8 +8,6 @@ Aluno: Melvin Gustavo Maradiaga Elvir
 Obs. Ativar word wrap (Alt + Z no VSCode) para ler melhor o código.
 
 Esta primeira versão do BitDogAnalyzer é uma prova de conceito, testando a viabilidade da implementação de um analisador lógico no RP2040. O projeto utiliza o PIO e DMA do microcontrolador, além de implementar o protocolo SUMP para comunicação com SIGROK configurado com o driver Openbench Logic Sniffer.
-
-O projeto atual não possui mecanismo de trigger, ele simplesmente pega as amostras do sinal digital detectado nos seus terminais e encaminha os dados coletados para o sigrok. Isso aqui pode fazer com que as formas de onda avaliadas não estejam alinhadas corretamente no software.
 */
 
 /* Diretivos do Preprocessador */
@@ -142,9 +140,12 @@ int main()
     -----------------------------
     | Configuração PWM de Teste |
     -----------------------------
-
     Retirado do exemplo de analisador lógico no Pi Pico.
+
+    Configuramos um PWM para gerar dois sinais em GPIO16 e GPIO17, um com um duty cycle de 25% e o outro com um duty cycle de 75%.
+    Estas formas de onda foram visualizadas mediante Sigrok ao testarmos o código.
     */
+
     #ifdef TESTE
         gpio_set_function(GPIO16, GPIO_FUNC_PWM);
         gpio_set_function(GPIO16 + 1, GPIO_FUNC_PWM);
@@ -361,6 +362,7 @@ int main()
                     
                     (Obs.Mmudando a frequência do CPU, poderiamos diminuir ainda mais a frequência de amostragem, mas aí entramos em problemas com a comunicação USB conforme dito na documentação. Também, frequências maiores de 2 MHz começam a ser imprecisas.)
 
+                    O projeto atual possui só um mecanismo de trigger simples.
                     */
                     
                     // Fato curioso, sm_config_set_clkdiv só modifica a estrutura do tipo pio_sm_config. Para modificar diretamente a máquina de estados, usar pio_sm_set_clkdiv.
@@ -379,8 +381,8 @@ int main()
                     busy_wait_ms(10);
 
                     break;
+                    // Usado para configurar triggers mais complexos. A versão atual só funciona com trigger simples.~
                 case SUMP_SET_READ_DELAY:
-                    // Precisa de logica de triggering para funcionar da forma correta. 
                     sump_receive_data();
                     break;
 
@@ -389,7 +391,6 @@ int main()
                     sump_receive_data();
                     break;
                 
-                // Os triggers tem funcionamento estranho.
                 case SUMP_TRIGGER_MSK:
                     sump_receive_data();
                     trigger_mask = sump_command_bytes[0];

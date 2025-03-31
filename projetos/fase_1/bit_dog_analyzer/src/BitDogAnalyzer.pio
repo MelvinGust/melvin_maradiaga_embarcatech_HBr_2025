@@ -4,7 +4,6 @@
 ; 
 ; Neste programa estou conferindo o estatus do pino em pins e escrevendo ele no registrador ISR.
 ;
-; O DMA vai complexificar isso aqui demais, fico fortemente assustado.
 
 .program sample0
 .wrap_target

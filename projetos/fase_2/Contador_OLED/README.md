@@ -1,5 +1,8 @@
 # Unidade 1 - Tarefa 1
 
+---
+## Objetivo do Projeto
+
 *Faça um programa, em linguagem C, que implemente um contador decrescente controlado por interrupção, com o seguinte comportamento:*
 - *Toda vez que o Botão A (GPIO5) for pressionado o contador decrescente reinicia em 9 e o valor da contagem é mostrado no display oled.*
 - *O sistema entra em modo de contagem regressiva ativa, decrementando o contador de 1 em 1 a cada segundo até chegar em zero.*
@@ -22,6 +25,19 @@
 - *A lógica da contagem decrescente e atualização do display OLED deve ocorrer no loop principal.*
 - *A variável que armazena os cliques do botão B deve ser zerada sempre que a contagem regressiva reiniciar.*
 - *O OLED deve mostrar, em tempo real: O valor atual do contador (de 9 a 0) e a quantidade de cliques no Botão B dentro da contagem em andamento.*
+---
+
+## Componentes Utilizados
+Esta atividade foi feita na sua inteiridade na *BitDogLab*, aproveitando os dois botões presentes na placa e o display OLED SSD1306.
+
+## Pinagem
+
+| **Periférico** | **Pino** | **Funcionalidade** |
+|----------------|----------|--------------------|
+| Botão A | GPIO 5 | INPUT mediante SRI. |
+| Botão B | GPIO 6 | INPUT mediante SRI. |
+| OLED SDA | GPIO14 | DATA do I2C. Escrita no OLED. |
+| OLED SCL | GPIO15 | CLK do I2C. Escrita no OLED. |
 
 ## Implementação
 
@@ -118,5 +134,8 @@ Como a interrupção do botão B foi desativada, não há risco de realizarmos u
 Note-se que a escrita na variável de contagem é realizada só na borda de descida, quando o botão é apertado.
 
 > O debounce implementado desta forma não é perfeito, dado que decidi ignorar mudanças nos pinos só durante 20ms. Nos testes com a placa não apresentou muito problema, mas poderia se tornar problematico em outras placas. Caso for necessário, trocar o termo WAIT_DEBOUNCE.
+
+## Resultados
+
 
 

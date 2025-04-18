@@ -1,15 +1,31 @@
 # Unidade 1 - Tarefa 2 
 
+---
+## Objetivo do Projeto
+
 *Faça um programa em C para ler os valores convertidos digitalmente do joystick da BitDogLab. Os valores podem ser mostrados no terminal ou então no display OLED.*
+
+---
+
+## Componentes Utilizados
+Esta atividade foi feita na sua inteiridade na *BitDogLab*, aproveitando o joystick de dois eixos e o display OLED SSD1306.
+
+## Pinagem
+
+| **Periférico** | **Pino** | **Funcionalidade** |
+|----------------|----------|--------------------|
+| Joystick (VRy) | GPIO 26 | INPUT ADC. Eixo Y do joystick. |
+| Joystick (VRx) | GPIO 27 | INPUT ADC. Eixo X do joystick. |
+| OLED SDA | GPIO14 | DATA do I2C. Escrita no OLED. |
+| OLED SCL | GPIO15 | CLK do I2C. Escrita no OLED. |
 
 ## Implementação
 
-
 Para esta tarefa preciso configurar o ADC do BitDogLab para amostrar os sinais de tensão presente nos pinos GPIO26 e GPIO27 (associados ao joystick) e apresentar eles no terminal ou no OLED. Note-se que existem múltiplas maneiras de realizar esta tarefa, ficando à mercê do programador a escolha.
 
-Sendo assim, escolhi realizar esta tarefa no OLED, aproveitando dois recursos bastante legais do RP2040: o modo *free-running* do ADC, que realiza amostras de forma periodica dos canais configurados, e o DMA, que permite a transferência destes dados para à memória do RP2040. 
+Sendo assim, escolhi realizar esta tarefa no OLED, aproveitando dois recursos bastante legais do RP2040: o **modo *free-running* do ADC**, que realiza amostras de forma periodica dos canais configurados, e o **DMA**, que permite a transferência destes dados para à memória do RP2040. 
 
-O intuito deste código é realizar a leitura dos dados do ADC totalmente fora do loop principal, deixando então um núcleo do RP2040 bastante livre para realizar qualquer outra tarefa. Na configuração usada, produzem-se 500k amostras por segundo no ADC, onde cada uma é processada no código ao ser finalizada.
+O intuito deste código é realizar a leitura dos dados do ADC totalmente fora do loop principal, deixando então um núcleo do RP2040 bastante livre para realizar qualquer outra tarefa. Na configuração usada, produzem-se 500k amostras por segundo no ADC. Cada amostra é processada no código depois dela ser finalizada.
 
 O programa funciona da forma seguinte:
 
@@ -104,3 +120,5 @@ Caso a variável for armazenada na memória com o *alinhamento de 4 bytes*, obte
 > Depois da segunda transferência, o DMA zera os dois últimos bits do endereço. Dessa forma, depois da primeira execução do DMA, fica como endereço base o endereço correto (0x80000000). Na próxima execução, o DMA vai escrever o valor no endereço certo, repetindo o processo descrito anteriormente.
 
 Devido ao alinhamento correto da variável na memória, não houve risco de corromper outros dados na memória, e o buffer em anel vai funcionar corretamente.
+
+## Resultados

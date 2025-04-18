@@ -12,12 +12,29 @@ Campinas, março de 2025
 
 ## Sobre este repositório
 
-Este repositório reúne os projetos desenvolvidos ao longo do curso de Sistemas Embarcados, durante a etapa de residência (composta pela fase 2 e 3 do programa).
+Este repositório reúne os projetos e as tarefas desenvolvidas ao longo do curso de Sistemas Embarcados, durante a etapa de residência (composta pela fase 2 e 3 do programa). 
 
-Cada projeto tem sua própria pasta, contendo o código-fonte, documentação e recursos visuais. Caso precisarem de qualquer outra informação, entrar em contato com o dono do repositório.
+Cada projeto e atividade tem sua própria pasta, contendo o código-fonte, documentação e recursos visuais. 
+
+Caso precisarem de qualquer outra informação, entrar em contato com o dono do repositório.
 
 ---
-
 ## Projetos
+### Fase 1
+-[BitDogAnalyzer](./projetos/fase_1/bit_dog_analyzer/)
 
+### Fase 2
+-[Galton Board](./projetos/galton_board/)
+-[Sintetizador de Som](./projetos/sintetizador_som/)
+-[Robô Equilibrista](./projetos/robo_equilibrista)
+
+## Atividades
+### Unidade 1 : Microcontroladores
+-[Contador OLED](./projetos/fase_2/Contador_OLED)
+-[Joystick ADC](./projetos/fase_2/Joystick_ADC)
+-[Temperatura ADC](./projetos/fase_2/Temperatura_ADC)
+
+### Unidade 2 : Internet das Coisas
+
+### Unidade 3: RTOS
 

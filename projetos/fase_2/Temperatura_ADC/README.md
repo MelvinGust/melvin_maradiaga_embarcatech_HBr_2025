@@ -1,6 +1,23 @@
 # Unidade 1 - Tarefa 3
 
+---
+## Objetivo do Projeto
+
 *Faça um programa em C para ler a temperatura interna do RP2040. Converta a leitura do ADC em um valor em ºC.*
+
+---
+
+## Componentes Utilizados
+Esta atividade foi feita na sua inteiridade na *BitDogLab*, usando o sensor de temperatura embutido no RP2040 e o display OLED SSD1306.
+
+## Pinagem
+
+| **Periférico** | **Pino** | **Funcionalidade** |
+|----------------|----------|--------------------|
+| OLED SDA | GPIO14 | DATA do I2C. Escrita no OLED. |
+| OLED SCL | GPIO15 | CLK do I2C. Escrita no OLED. |
+
+> O sensor de temperatura interno é accesado mediante uma configuração específica do DMA. Ele não possui uma pinagem associada.
 
 ## Implementação
 Para esta tarefa preciso configurar o ADC do RP2040 para realizar a leitura do sensor de temperatura interno (provavelmente, no silicio do microcontrolador) que ele possui. O programa é muito simples, e funciona da seguinte forma:
@@ -54,3 +71,4 @@ Assim, foram implementados os seguintes bitmaps em *ssd1306_font.h*:
 >
 > 0x00, 0x00, 0x00, 0x00, 0x07, 0x05, 0x07, 0x00; representando '°'
 
+## Resultados

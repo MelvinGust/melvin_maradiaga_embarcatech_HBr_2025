@@ -122,3 +122,8 @@ Caso a variável for armazenada na memória com o *alinhamento de 4 bytes*, obte
 Devido ao alinhamento correto da variável na memória, não houve risco de corromper outros dados na memória, e o buffer em anel vai funcionar corretamente.
 
 ## Resultados
+![image_joystick1](./assets/Joystick_ADC_1.jpeg)
+
+![image_joystick2](./assets/Joystick_ADC_2.jpeg)
+
+![image_joystick3](./assets/Joystick_ADC_3.jpeg)

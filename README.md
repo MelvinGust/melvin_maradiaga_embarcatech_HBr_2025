@@ -1,8 +1,8 @@
 # Projetos de Sistemas Embarcados - EmbarcaTech 2025
 
-Autor: **Melvin Gustavo Maradiaga Elvir**
+**Autor:** Melvin Gustavo Maradiaga Elvir
 
-Curso: Residência Tecnológica em Sistemas Embarcados
+**Curso:** Residência Tecnológica em Sistemas Embarcados
 
 Instituição: EmbarcaTech - HBr
 
@@ -21,10 +21,10 @@ Caso tiverem alguma dúvida ou precisarem de qualquer outra informação, podem 
 ---
 ## Projetos
 ### Fase 1
-- [**BitDogAnalyzer**](./projetos/fase_1/bit_dog_analyzer/) : Um protótipo de analizador lógico implementado no BitDogLab.
+- [**BitDogAnalyzer**](./projetos/bit_dog_analyzer/) : Um protótipo de analizador lógico implementado no BitDogLab, compatível com Pulse View.
 
 ### Fase 2
-- [**Galton Board**](./projetos/galton_board/)
+- [**Galton Board**](./projetos/galton_board/) : Uma simulação do *tabuleiro de Galton* feito no BitDogLab, visualizado no OLED da placa.
 
 - [**Sintetizador de Som**](./projetos/sintetizador_som/)
 
@@ -33,11 +33,11 @@ Caso tiverem alguma dúvida ou precisarem de qualquer outra informação, podem 
 
 ## Atividades
 ### Unidade 1 : Microcontroladores
-- [**Contador OLED**](./projetos/fase_2/Contador_OLED)
+- [**Contador OLED**](./projetos/fase_2/contador_OLED)
 
-- [**Joystick ADC**](./projetos/fase_2/Joystick_ADC)
+- [**Joystick ADC**](./projetos/fase_2/joystick_ADC)
 
-- [**Temperatura ADC**](./projetos/fase_2/Temperatura_ADC)
+- [**Temperatura ADC**](./projetos/fase_2/temperatura_ADC)
 
 ### Unidade 2 : Internet das Coisas
 

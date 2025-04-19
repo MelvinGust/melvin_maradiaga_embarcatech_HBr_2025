@@ -72,3 +72,4 @@ Assim, foram implementados os seguintes bitmaps em *ssd1306_font.h*:
 > 0x00, 0x00, 0x00, 0x00, 0x07, 0x05, 0x07, 0x00; representando '°'
 
 ## Resultados
+![image_temperature](./assets/Temperature_ADC.jpeg)

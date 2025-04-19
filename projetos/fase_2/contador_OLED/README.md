@@ -136,6 +136,7 @@ Note-se que a escrita na variável de contagem é realizada só na borda de desc
 > O debounce implementado desta forma não é perfeito, dado que decidi ignorar mudanças nos pinos só durante 20ms. Nos testes com a placa não apresentou muito problema, mas poderia se tornar problematico em outras placas. Caso for necessário, trocar o termo WAIT_DEBOUNCE.
 
 ## Resultados
+![image_contador](./assets/Contador_OLED.jpeg)
 
 
 

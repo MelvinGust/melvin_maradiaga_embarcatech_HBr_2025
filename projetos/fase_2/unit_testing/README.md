@@ -53,7 +53,7 @@ Com a seguinte definição para adc_to_celsius (presente em adc_test.c):
         return (27.0f - (ADC_RESOLUTION * (float)adc_val - 0.706f)/0.001721f);
     }
 
-Este teste confere, mediante a função **TEST_ASSERT_FLOAT_WITHIN** se o float gerado pela função adc_to_celsius, com entrada *adc_val = 876* está no intervalo [26,5 ; 27,5], conforme esperado pela ao resolvermos a equação com 876. Se a implementação estiver errada, o teste iria falhar, mostrando que há algum problema na lógica desenvolvida.
+Este teste confere, mediante a função **TEST_ASSERT_FLOAT_WITHIN** se o float gerado pela função adc_to_celsius, com entrada *adc_val = 876* está no intervalo [26,5 ; 27,5], conforme esperado ao resolvermos a equação com 876. Se a implementação estiver errada, o teste iria falhar, mostrando que há algum problema na lógica desenvolvida.
 
 > As funções setUp() e tearDown() foram declaradas no código como exigência do Unity quando ele é instalado diretamente, como foi feito aqui.
 
@@ -68,6 +68,8 @@ Para rodar o teste unitário é necessário abrir o CMakeLists e conferir se TES
 Caso o flag TEST_BUILD estiver OFF, basta apagar o valor e escrever ON.
 
 Uma vez configurado, o CMakeLists pode ser executado mediante a linha de comando, ou mediante extensões do VSCode. Este CMake vai gerar um arquivo executável nomeado **test1_app**, correspondente ao teste unitário, dentro do diretorio build. Para realizar o teste unitario precisa-se executar *test1_app*.
+
+> Nesta implementação em específico, o CMakeLists foi executado mediante a extensão do Pico SDK, aproveitando as ferramentas de CMake que ela oferece.
 
 ## Resultados
 ![image_test_result](./assets/unit_test1.png)

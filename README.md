@@ -39,6 +39,10 @@ Caso tiverem alguma dúvida ou precisarem de qualquer outra informação, podem 
 
 - [**Temperatura ADC**](./projetos/fase_2/temperatura_ADC)
 
+- [**Arquitetura Modular**](./projetos/fase_2/arquitetura_modular)
+
+- [**Testes Unitarios**](./projetos/fase_2/unit_testing): Utilização de "Unity" para a realização de testes unitários em C.
+
 ### Unidade 2 : Internet das Coisas
 
 ### Unidade 3: RTOS

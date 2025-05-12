@@ -35,7 +35,12 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(galton_board galton_board.c )
+add_executable(galton_board
+    app/galton_board.c
+    drivers/ssd1306_program_sprites.c
+    drivers/ssd1306_rp2040_i2c.c
+    drivers/bitdoglab.c
+)   
 
 pico_set_program_name(galton_board "galton_board")
 pico_set_program_version(galton_board "0.1")
@@ -46,16 +51,23 @@ pico_enable_stdio_usb(galton_board 1)
 
 # Add the standard library to the build
 target_link_libraries(galton_board
-        pico_stdlib)
+        pico_stdlib
+        pico_rand)
 
 # Add the standard include files to the build
 target_include_directories(galton_board PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
+        ${CMAKE_CURRENT_LIST_DIR}/drivers
 )
 
 # Add any user requested libraries
 target_link_libraries(galton_board 
-        
+        hardware_i2c
+        hardware_timer
+        hardware_adc
+        hardware_dma
+        hardware_irq
+        hardware_gpio
         )
 
 pico_add_extra_outputs(galton_board)
